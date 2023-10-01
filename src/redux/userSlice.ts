@@ -1,5 +1,5 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import { createSlice } from "@reduxjs/toolkit";
+//import axios from "axios";
 import { User } from "../declarations";
 
 /* export const fetchRandomPokemon = createAsyncThunk(
@@ -28,16 +28,16 @@ const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    cardClick: (state, action) => {
+    /* cardClick: (state, action) => {
       return;
-    },
+    }, */
   },
 
-  extraReducers: (builder) => {
-    /* builder.addCase(fetchRandomPokemon.fulfilled, (state, action) => {
+  //extraReducers: (builder) => {
+  /* builder.addCase(fetchRandomPokemon.fulfilled, (state, action) => {
       state.pokemonCards = action.payload;
     }); */
-  },
+  //},
 });
 
 export const userReducer = userSlice.reducer;
