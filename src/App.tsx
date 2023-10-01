@@ -6,8 +6,9 @@ import Login from "./pages/Login/Login";
 import Catalog from "./pages/Catalog/Catalog";
 import Profile from "./pages/Profile/Profile";
 import { useAppSelector } from "./redux/hooks";
+import Cart from "./pages/Cart/Cart";
 
-function App() {
+export default function App() {
   const { user } = useAppSelector((state) => state.user);
 
   return (
@@ -15,7 +16,7 @@ function App() {
       <Route path="home" element={<Navigate to="/" />} />
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
-        {user ? <PublicRoutes /> : <ProtectedRoutes />}
+        {user ? protectedRoutes : publicRoutes}
         <Route path="catalog" element={<Catalog />} />
         <Route path="404" element={<NotFound />} />
       </Route>
@@ -24,14 +25,27 @@ function App() {
   );
 }
 
-export default App;
-
 ///////////////////////////////////////////
 
-function PublicRoutes() {
+const publicRoutes = (
+  <>
+    <Route path="login" element={<Login />} />
+    <Route path="profile" element={<Navigate to="/login" />} />
+    <Route path="cart" element={<Navigate to="/login" />} />
+  </>
+);
+
+const protectedRoutes = (
+  <>
+    <Route path="profile" element={<Profile />} />
+    <Route path="cart" element={<Cart />} />
+  </>
+);
+
+/* function PublicRoutes() {
   return (
     <>
-      <Route path="profile" element={<Profile />} />
+      <Route path="login" element={<Login />} />
     </>
   );
 }
@@ -40,7 +54,7 @@ function ProtectedRoutes() {
   return (
     <>
       <Route path="profile" element={<Login />} />
-      <Route path="login" element={<Login />} />
+      <Route path="profile" element={<Profile />} />
     </>
   );
-}
+} */
