@@ -11,6 +11,7 @@ import Cart from "./pages/Cart/Cart";
 export default function App() {
   const { user } = useAppSelector((state) => state.user);
 
+  console.log(import.meta.env.VITE_ENV_STRING);
   return (
     <Routes>
       <Route path="home" element={<Navigate to="/" />} />
