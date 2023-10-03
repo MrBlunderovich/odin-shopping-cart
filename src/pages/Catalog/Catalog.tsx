@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { fetchProducts } from "../../redux/productsSlice";
+import { fetchProducts } from "../../redux/catalogSlice";
 import ProductCard from "../../components/ProductCard/ProductCard";
 
 export default function Catalog() {
-  const { products } = useAppSelector((state) => state.products);
+  const { products } = useAppSelector((state) => state.catalog);
   const dispatch = useAppDispatch();
 
   useEffect(() => {

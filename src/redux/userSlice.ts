@@ -17,21 +17,6 @@ export const login = createAsyncThunk<any, Credentials>(
     return response.data;
   }
 );
-/* export const fetchRandomPokemon = createAsyncThunk(
-  "game/fetchRandomPokemon",
-  async (_, thunkAPI) => {
-    const wholeState = thunkAPI.getState() as RootState;
-    const gameState = wholeState.game;
-    const IDs = pickRandomIDs(gameState.numberOfCards);
-    const promises = IDs.map((id) =>
-      axios
-        .get(`https://pokeapi.co/api/v2/pokemon/${id}`)
-        .then((response) => response.data)
-    );
-    const results = await Promise.all(promises);
-    return results;
-  }
-); */
 
 const initialState: User = {
   user: null,
