@@ -8,6 +8,7 @@ export default function Home() {
         <br />
         - make cart refetches conditional, check staleness?
         <br />- make successful login redirect user to previous page
+        <br />- try provoking conflict
       </pre>
     </div>
   );
