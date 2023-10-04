@@ -32,7 +32,7 @@ const publicRoutes = (
   <>
     <Route path="login" element={<Login />} />
     <Route path="profile" element={<Navigate to="/login" />} />
-    <Route path="cart" element={<Navigate to="/login" />} />
+    <Route path="cart" element={<Cart />} />
   </>
 );
 

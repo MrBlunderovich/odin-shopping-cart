@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { CartItem, Credentials, User } from "../declarations";
+import { UserCartItem, Credentials, User } from "../declarations";
 import axios from "axios";
 
 export const login = createAsyncThunk<any, Credentials>(
@@ -22,25 +22,40 @@ const initialState: User = {
   user: null,
   accessToken: null,
   refreshToken: null,
-  cart: [],
+  cart: [] as UserCartItem[],
 };
 
-function newCartItem(id: string, quantity: number): CartItem {
+/* function newCartItem(id: string, quantity: number): CartItem {
   return { id, quantity };
-}
+} */
 
 const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
     addToCart: (state, action) => {
-      const id = action.payload.id;
+      const data = action.payload.data;
+      const id = data.id;
       const productInCart = state.cart.find((item) => item.id === id);
       if (productInCart) {
         productInCart.quantity++;
       } else {
-        state.cart.push(newCartItem(id, 1));
+        state.cart.push({ ...data, quantity: 1 });
       }
+    },
+    cartItemIncrement: (state, action) => {
+      const id = action.payload.id as string;
+      const itemToChange = state.cart.find((item) => item.id === id);
+      itemToChange && (itemToChange.quantity += 1);
+    },
+    cartItemDecrement: (state, action) => {
+      const id = action.payload.id as string;
+      const itemToChange = state.cart.find((item) => item.id === id);
+      itemToChange && itemToChange.quantity > 1 && (itemToChange.quantity -= 1);
+    },
+    cartItemDelete: (state, action) => {
+      const id = action.payload.id as string;
+      state.cart = state.cart.filter((item) => item.id !== id);
     },
   },
 

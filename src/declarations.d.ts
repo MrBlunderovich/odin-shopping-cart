@@ -2,14 +2,14 @@ export type User = {
   user: string | null;
   accessToken: string | null;
   refreshToken: string | null;
-  cart: CartItem[];
+  cart: UserCartItem[];
 };
 
 export type Product = {
   id: string;
   title: string;
   description: string;
-  imageUrl: string;
+  image_url: string;
   price: number;
 };
 
@@ -18,7 +18,11 @@ export type Credentials = {
   password: string;
 };
 
-export type CartItem = {
+/* export type CartItem = {
   id: string;
+  quantity: number;
+};
+ */
+type UserCartItem = Product & {
   quantity: number;
 };

@@ -12,15 +12,16 @@ export default function Catalog() {
     dispatch(fetchProducts());
   }, [products]);
   return (
-    <div className="bg-slate-400 text-lg flex min-h-screen items-center justify-center gap-4">
+    <div className="bg-slate-400 p-4 flex-wrap text-lg flex min-h-screen items-center justify-center gap-4">
       {products.map((item) => (
         <ProductCard
           key={item.id}
-          id={item.id}
+          data={item}
+          /* id={item.id}
           title={item.title}
           description={item.description}
           imageUrl={item.imageUrl}
-          price={item.price}
+          price={item.price} */
         />
       ))}
     </div>
