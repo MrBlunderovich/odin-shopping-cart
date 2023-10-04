@@ -42,6 +42,22 @@ const userSlice = createSlice({
         state.cart.push(newCartItem(id, 1));
       }
     },
+    cartItemIncrement: (state, action) => {
+      const id = action.payload.id as string;
+      state.cart.map((item) =>
+        item.id === id ? newCartItem(id, item.quantity + 1) : item
+      );
+    },
+    cartItemDecrement: (state, action) => {
+      const id = action.payload.id as string;
+      state.cart.map((item) =>
+        item.id === id ? newCartItem(id, item.quantity - 1) : item
+      );
+    },
+    cartItemDelete: (state, action) => {
+      const id = action.payload.id as string;
+      state.cart.filter((item) => item.id !== id);
+    },
   },
 
   extraReducers: (builder) => {
