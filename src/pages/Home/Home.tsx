@@ -6,8 +6,9 @@ export default function Home() {
       <pre>
         - make user sessions persistent
         <br />
-        - make cart refetches conditional, check staleness?
-        <br />- make successful login redirect user to previous page
+        - update cart item stock status somehow
+        <br />- let successful login redirect user to previous page
+        <br />- process failure to log in
       </pre>
     </div>
   );
