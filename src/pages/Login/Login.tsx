@@ -1,4 +1,11 @@
+import { useNavigate } from "react-router-dom";
+import { useAppDispatch } from "../../redux/hooks";
+import { login } from "../../redux/userSlice";
+
 export default function Login() {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.target as HTMLFormElement;
@@ -6,6 +13,9 @@ export default function Login() {
     const username = form.username.value;
     const password = form.password.value;
     console.log({ username, password });
+    dispatch(login({ username, password })).then(() =>
+      navigate("/home", { replace: true })
+    );
     /* const {
       usernameInput: { value: username },
       passwordInput: { value: password },
