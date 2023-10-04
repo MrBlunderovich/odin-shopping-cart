@@ -16,7 +16,7 @@ export default function Header() {
         {user && <NavLink to="profile">Profile</NavLink>}
         {!user && <NavLink to="login">Login</NavLink>}
       </nav>
-      <span className="text-red-400 ml-auto col-start-3">
+      <span className="text-yellow-500 ml-auto col-start-3">
         {user || "no user"}
         <span>:{numberOfItemsInCart}</span>
       </span>
